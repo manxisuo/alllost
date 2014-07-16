@@ -1,0 +1,156 @@
+html {
+    background-color: rgb(210, 244, 254);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Galdeano","Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;
+}    
+
+a, a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#wrapper {
+    margin: 0 /* auto */;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    min-width: 600px;
+    text-align: left;
+}
+
+#header {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 45px /* 140px */;
+    background: #0AA9FF;
+}
+
+#header h1 {
+	margin: 0;
+    padding: 5px 0 0 10px;
+}
+#header h1 a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}
+
+#main {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    background: transparent;
+}
+
+#pic_wrapper {
+	text-align: center;
+	margin: 10px 0;
+}
+
+#pic {
+	max-width: 500px;
+	padding: 8px;
+	background-color: white;
+}
+
+#pager {
+	margin: 20px 0 0 0;
+	text-align: center;
+}
+
+.prev, .next {
+	border: 1px solid black;
+	background-color: gray;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.prev:hover, .next:hover {
+	background-color: white;
+}
+
+.prev {
+	margin-right: 50px;
+}
+
+#footer {
+    clear: both;
+    width: 100%;
+    height: 60px;
+    background: #0AA9FF;
+    text-align: center;
+    margin: 10px 0 0 0;
+    box-shadow: 0px 1px 3px #A8ABAB;
+
+}
+
+#footer p {
+    padding-top: 5px;
+}
+
+/* ----------------Disqus-------------- */
+#dsq1 {
+    background-color: white;
+    padding: 10px;
+    width: 730px !important;
+    
+    moz-border-radius: 5px;
+    webkit-moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 1px 3px #A8ABAB;
+    -moz-box-shadow: 0px 1px 3px #A8ABAB;
+    box-shadow: 0px 1px 3px #A8ABAB;
+}
+
+/* ----------------widget-------------- */
+.widget {
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: none;
+}
+
+.profile {
+    padding: 5px;
+    background-color: white;
+}
+
+.profile img{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------common class---------------- */
+.round-corner {
+    moz-border-radius: 5px;
+    webkit-moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 1px 3px #A8ABAB;
+    -moz-box-shadow: 0px 1px 3px #A8ABAB;
+    box-shadow: 0px 1px 3px #A8ABAB;
+}
+
+.disable-link {
+    /* color: gray; */
+    visibility: hidden;
+}
+
+.ellipsis {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
