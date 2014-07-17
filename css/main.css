@@ -1,5 +1,5 @@
 html {
-    background-color: rgb(210, 244, 254);
+    background-color: rgb(114, 176, 194) /* rgb(210, 244, 254) */;
 }
 
 body {
@@ -55,9 +55,10 @@ a, a:hover {
     background: transparent;
 }
 
-#pic_wrapper {
+#content {
 	text-align: center;
-	margin: 10px 0;
+	margin: 10px auto;
+	width: 520px;
 }
 
 #pic {
@@ -66,20 +67,24 @@ a, a:hover {
 	background-color: white;
 }
 
+#desc {
+	padding: 5px;
+}
+
 #pager {
-	margin: 20px 0 0 0;
+	margin: 20px 0;
 	text-align: center;
 }
 
 .prev, .next {
-	border: 1px solid black;
-	background-color: gray;
+	border: 1px solid #333333;
+	background-color: #888888;
 	padding: 5px 10px;
 	cursor: pointer;
 }
 
 .prev:hover, .next:hover {
-	background-color: white;
+	background-color: #BBBBBB;
 }
 
 .prev {
@@ -94,7 +99,7 @@ a, a:hover {
     text-align: center;
     margin: 10px 0 0 0;
     box-shadow: 0px 1px 3px #A8ABAB;
-
+	display: none;
 }
 
 #footer p {
@@ -136,9 +141,9 @@ a, a:hover {
 
 /* --------------common class---------------- */
 .round-corner {
-    moz-border-radius: 5px;
-    webkit-moz-border-radius: 5px;
-    border-radius: 5px;
+    moz-border-radius: 10px;
+    webkit-moz-border-radius: 10px;
+    border-radius: 10px;
     -webkit-box-shadow: 0px 1px 3px #A8ABAB;
     -moz-box-shadow: 0px 1px 3px #A8ABAB;
     box-shadow: 0px 1px 3px #A8ABAB;
