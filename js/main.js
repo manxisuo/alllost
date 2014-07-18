@@ -4,8 +4,6 @@ var postList = [];
 
 var popWin = null;
 
-var timer = -1;
-
 function log(msg) {
 	console.log(msg);
 }
@@ -45,7 +43,7 @@ function show404Page() {
 }
 
 function showAboutPage() {
-	updatePost('image/About.jpg', 'About', '一个涂鸦的集合', null);
+	updatePost('image/About.jpg', '关于', '一个涂鸦的集合', null);
 
 	$('.prev').attr('href', '#' + postList[0].name);
 	$('.next').attr('href', '#' + postList[0].name);
@@ -99,11 +97,8 @@ function updatePost(image, title, desc, date) {
 	
 	if ($('#pic').attr('src') != dest_img) {
 		$('#pic').attr('src', dest_img);
-		clearTimeout(timer);
-		popWin.show();
-		timer = setTimeout(function() {
-			popWin.hide();
-		}, 5000);
+
+		popWin.show(5000);
 		
 		reloadComment(image.substring('image/'.length, image.lastIndexOf('.')), dest_title);
 

@@ -2,6 +2,7 @@ function PopWin(win) {
 	this.win = win;
 	this.mask = null;
 	this.visible = false;
+	this.timer = -1;
 	
 	this._init();
 }
@@ -24,7 +25,8 @@ PopWin.prototype._init = function() {
 	this.mask = mask;
 }
 
-PopWin.prototype.show = function() {
+PopWin.prototype.show = function(timeout) {
+
 	if (this.visible) return;
 
 	var mask = this.mask;
@@ -51,6 +53,14 @@ PopWin.prototype.show = function() {
 	win.show();
 	
 	this.visible = true;
+	
+	// 设置超时
+	clearTimeout(this.timer);
+	if (timeout) {
+		this.timer = setTimeout(function() {
+			this.hide();
+		}, timeout);
+	}
 }
 
 PopWin.prototype.hide = function() {
@@ -64,4 +74,6 @@ PopWin.prototype.hide = function() {
 	
 	this.visible = false;
 	
+	// 清除定时
+	clearTimeout(this.timer);
 }
