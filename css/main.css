@@ -37,12 +37,26 @@ a, a:hover {
 #header h1 {
 	margin: 0;
     padding: 5px 0 0 10px;
+	display: inline;
 }
 #header h1 a {
     text-decoration: none;
     font-weight: bold;
     font-size: 25px;
     color: black;
+}
+
+#header span.menu {
+    float: right;
+	padding: 10px 5px 0 0;
+}
+
+#header span.menu a {
+	padding-right: 10px;
+}
+
+#header span.menu a:hover {
+    color: gray;
 }
 
 #main {

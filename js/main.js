@@ -38,6 +38,13 @@ function show404Page() {
 	$('.next').attr('href', '#' + postList[0].name);
 }
 
+function showAboutPage() {
+	updatePost('image/About.jpg', 'About', '一个涂鸦的集合', null);
+
+	$('.prev').attr('href', '#' + postList[0].name);
+	$('.next').attr('href', '#' + postList[0].name);
+}
+
 function showPostWithName(name) {
 	for (var i = 0, len = postList.length; i < len; i++) {
 		if (postList[i].name == name) {
@@ -54,9 +61,14 @@ function showPostWithName(name) {
 // 路由
 function handleHashChange(hash) {
     if ('' == hash) {
-        // showPostList();
         showPostWithIndex(0);
     }
+	else if ('#NotFound' == hash) {
+		show404Page();
+	}
+	else if ('#About' == hash) {
+		showAboutPage();
+	}
     else if (hash.charAt(0) == '#') {
 		var name = hash.substring(1, hash.length);
 		showPostWithName(name);
