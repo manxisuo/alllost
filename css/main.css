@@ -62,9 +62,8 @@ a, a:hover {
 }
 
 #pic {
-	max-width: 500px;
-	min-width: 500px;
 	width: 500px;
+	min-height: 500px;
 	padding: 8px;
 	background-color: white;
 }
