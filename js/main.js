@@ -93,13 +93,14 @@ function updatePost(image, title, desc, date) {
 	var dest_desc = desc ? desc : '';
 	var dest_img = image ? image : '';
 	
-	setTitle(dest_title);
-	$('#title').text(dest_title);
-	$('#desc').text(dest_desc);
-	
 	if ($('#pic').attr('src') != dest_img) {
 		popWin.show(5000);
 		updateImage(dest_img, function() {
+			setTitle(dest_title);
+			$('#title').text(dest_title);
+			
+			$('#desc').text(dest_desc);
+			
 			reloadComment(image.substring('image/'.length, image.lastIndexOf('.')), dest_title);
 			popWin.hide();
 		});
