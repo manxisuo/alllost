@@ -1,6 +1,3 @@
 <script type="text/javascript">
-	var PAGE_NAME = '404.html';
-	var href = location.href;
-	var redirectUrl = href.substring(0, href.length - PAGE_NAME.length) + '#NotFound';
-	window.location.href = redirectUrl;
+	location.href = location.origin + '#NotFound';
 </script>
