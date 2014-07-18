@@ -4,6 +4,8 @@ var postList = [];
 
 var popWin = null;
 
+var timer = -1;
+
 function log(msg) {
 	console.log(msg);
 }
@@ -74,12 +76,12 @@ function updatePost(image, title, desc, date) {
 	
 	if ($('#pic').attr('src') != dest_img) {
 		$('#pic').attr('src', dest_img);
+		clearTimeout(timer);
 		popWin.show();
+		timer = setTimeout(function() {
+			popWin.hide();
+		}, 5000);
 	}
-	else {
-		log('No Change!');
-	}
-
 }
 
 
