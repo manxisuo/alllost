@@ -18,7 +18,7 @@ function initPostList(callback) {
 function showPostWithIndex(index) {
 	var post = postList[index];
 	
-	content.update('image/' + post.name + '.jpg', post.title, post.desc, post.date);
+	updatePost('image/' + post.name + '.jpg', post.title, post.desc, post.date);
 	
 	if (index > 0) {
 		$('.prev').attr('href', '#' + postList[index - 1].name);
@@ -30,7 +30,7 @@ function showPostWithIndex(index) {
 }
 
 function show404Page() {
-	content.update('image/NotFound.jpg', 'Not Found', 'Not Found', null);
+	updatePost('image/NotFound.jpg', 'Not Found', 'Not Found', null);
 
 	$('.prev').attr('href', '#' + postList[0].name);
 	$('.next').attr('href', '#' + postList[0].name);
@@ -64,25 +64,24 @@ function handleHashChange(hash) {
     }
 }
 
-var content = {
-	title: '',
-	desc: '',
-	date: '',
-	image: '',
-	update: function(image, title, desc, date) {
-		this.title = title ? title : '';
-		this.desc = desc ? desc : '';
-		this.date = date ? date : '';
-		this.image = image ? image : '';
-		this._reload();
-	},
-	_reload: function() {
-		$('#title').text(this.title);
-		$('#desc').text(this.desc);
-		$('#pic').attr('src', this.image);
+function updatePost(image, title, desc, date) {
+	var dest_title = title ? title : '';
+	var dest_desc = desc ? desc : '';
+	var dest_img = image ? image : '';
+	
+	$('#title').text(dest_title);
+	$('#desc').text(dest_desc);
+	
+	if ($('#pic').attr('src') != dest_img) {
+		$('#pic').attr('src', dest_img);
 		popWin.show();
 	}
+	else {
+		log('No Change!');
+	}
+
 }
+
 
 function jumpto(hash) {
 	window.location.href = '#' + hash;
