@@ -98,13 +98,22 @@ function updatePost(image, title, desc, date) {
 	$('#desc').text(dest_desc);
 	
 	if ($('#pic').attr('src') != dest_img) {
-		$('#pic').attr('src', dest_img);
-
 		popWin.show(5000);
-		
-		reloadComment(image.substring('image/'.length, image.lastIndexOf('.')), dest_title);
-
+		updateImage(dest_img, function() {
+			reloadComment(image.substring('image/'.length, image.lastIndexOf('.')), dest_title);
+			popWin.hide();
+		});
 	}
+}
+
+function updateImage(dest_img, callback) {
+	$('#pic').attr('src', dest_img);
+	
+	$('#pic').on('load', function(e) {
+		if(callback) {
+			callback();
+		}
+	});
 }
 
 function reloadComment(postId, title) {
@@ -115,15 +124,6 @@ function reloadComment(postId, title) {
 	DUOSHUO.EmbedThread(dsThread[0]);
 	
 	$('.widget').html(dsThread);
-}
-
-function reloadTest() {
-	(function() {
-		var script = document.createElement('script')
-		script.src = 'https://gist.githubusercontent.com/manxisuo/893adda3dc45e1eea480/raw/14e78eccd3cbb631d00817811d3773c31138e707/gistfile1.js';
-		script.type = 'text/javascript';
-		document.getElementsByTagName('head')[0].appendChild(script);
-	})();
 }
 
 function jumpto(hash) {
@@ -137,12 +137,6 @@ $(function() {
 	$(document).on('keypress', function(e) {
 		
 	});
-
-	$('#pic').on('load', function(e) {
-		popWin.hide();
-	});
-	
-	// popWin.hide();
 	
 	// hash change event
     $(window).hashchange(function(){
