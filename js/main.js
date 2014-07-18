@@ -2,6 +2,8 @@ var cur_index = 0;
 
 var postList = [];
 
+var popWin = null;
+
 function log(msg) {
 	console.log(msg);
 }
@@ -78,6 +80,7 @@ var content = {
 		$('#title').text(this.title);
 		$('#desc').text(this.desc);
 		$('#pic').attr('src', this.image);
+		popWin.show();
 	}
 }
 
@@ -86,10 +89,17 @@ function jumpto(hash) {
 }
 
 $(function() {
+	popWin = new PopWin($('#loading'));
+
 	$(document).on('keypress', function(e) {
 		
-		log(e);
 	});
+
+	$('#pic').on('load', function(e) {
+		popWin.hide();
+	});
+	
+	// popWin.hide();
 	
 	// hash change event
     $(window).hashchange(function(){

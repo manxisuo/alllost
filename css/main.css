@@ -106,6 +106,14 @@ a, a:hover {
     padding-top: 5px;
 }
 
+#loading {
+	position: absolute;
+	display: none;
+	width: 200px;
+	height: 35px;
+	padding-top: 10px;
+}
+
 /* ----------------Disqus-------------- */
 #dsq1 {
     background-color: white;
@@ -144,6 +152,15 @@ a, a:hover {
     moz-border-radius: 10px;
     webkit-moz-border-radius: 10px;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 3px #A8ABAB;
+    -moz-box-shadow: 0px 1px 3px #A8ABAB;
+    box-shadow: 0px 1px 3px #A8ABAB;
+}
+
+.round-corner-5 {
+    moz-border-radius: 5px;
+    webkit-moz-border-radius: 5px;
+    border-radius: 5px;
     -webkit-box-shadow: 0px 1px 3px #A8ABAB;
     -moz-box-shadow: 0px 1px 3px #A8ABAB;
     box-shadow: 0px 1px 3px #A8ABAB;
