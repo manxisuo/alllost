@@ -44,7 +44,7 @@ a, a:hover {
     font-weight: bold;
     font-size: 25px;
     color: black;
-	border: 0 solid orange;
+	border-left: 10px solid orange;
 	padding: 1px;
 }
 #header h1 a:hover {
@@ -58,7 +58,7 @@ a, a:hover {
 
 #header span.menu a {
 	margin-right: 10px;
-	border: 0 solid orange;
+	border-left: 8px solid orange;
 	padding: 1px;
 }
 
