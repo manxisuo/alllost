@@ -150,9 +150,9 @@ a, a:hover {
 /* ----------------widget-------------- */
 .widget {
 	margin: 0 0 10px 0;
-	padding: 0 8px;
+	padding: 20px 10px;
 	background-color: white;
-	width: 500px;
+	width: 496px;
 }
 
 .profile {
