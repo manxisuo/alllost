@@ -57,8 +57,9 @@ PopWin.prototype.show = function(timeout) {
 	// 设置超时
 	clearTimeout(this.timer);
 	if (timeout) {
+		var _this = this;
 		this.timer = setTimeout(function() {
-			this.hide();
+			_this.hide();
 		}, timeout);
 	}
 }
