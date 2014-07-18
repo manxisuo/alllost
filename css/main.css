@@ -60,19 +60,16 @@ a, a:hover {
 }
 
 #main {
-    display: inline-block;
-    vertical-align: top;
-    margin: 10px 0;
     padding: 0;
     border: 0;
-    width: 100%;
     background: transparent;
-}
-
-#content {
 	text-align: center;
 	margin: 10px auto;
 	width: 520px;
+}
+
+#content {
+
 }
 
 #pic {
@@ -145,9 +142,10 @@ a, a:hover {
 
 /* ----------------widget-------------- */
 .widget {
-    margin: 0 0 10px 0;
-    padding: 0;
-    display: none;
+	margin: 0 0 10px 0;
+	padding: 0 8px;
+	background-color: white;
+	width: 500px;
 }
 
 .profile {

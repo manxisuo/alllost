@@ -19,15 +19,21 @@ function initPostList(callback) {
 
 function showPostWithIndex(index) {
 	var post = postList[index];
-	
+
 	updatePost('image/' + post.name + '.jpg', post.title, post.desc, post.date);
 	
 	if (index > 0) {
 		$('.prev').attr('href', '#' + postList[index - 1].name);
 	}
+	else {
+		$('.prev').attr('href', '#' + postList[0].name);
+	}
 	
 	if (index < postList.length - 1) {
 		$('.next').attr('href', '#' + postList[index + 1].name);
+	}
+	else {
+		$('.next').attr('href', '#' + postList[postList.length - 1].name);
 	}
 }
 
@@ -78,11 +84,16 @@ function handleHashChange(hash) {
     }
 }
 
+function setTitle(title) {
+	document.title = title + ' - All the Lost';
+}
+
 function updatePost(image, title, desc, date) {
 	var dest_title = title ? title : '';
 	var dest_desc = desc ? desc : '';
 	var dest_img = image ? image : '';
 	
+	setTitle(dest_title);
 	$('#title').text(dest_title);
 	$('#desc').text(dest_desc);
 	
@@ -93,9 +104,30 @@ function updatePost(image, title, desc, date) {
 		timer = setTimeout(function() {
 			popWin.hide();
 		}, 5000);
+		
+		reloadComment(image.substring('image/'.length, image.lastIndexOf('.')), dest_title);
+
 	}
 }
 
+function reloadComment(postId, title) {
+	var dsThread = $('<div />');
+	dsThread.attr('data-thread-key', postId);
+	dsThread.attr('data-title', title);
+	dsThread.attr('data-url', location.href);
+	DUOSHUO.EmbedThread(dsThread[0]);
+	
+	$('.widget').html(dsThread);
+}
+
+function reloadTest() {
+	(function() {
+		var script = document.createElement('script')
+		script.src = 'https://gist.githubusercontent.com/manxisuo/893adda3dc45e1eea480/raw/14e78eccd3cbb631d00817811d3773c31138e707/gistfile1.js';
+		script.type = 'text/javascript';
+		document.getElementsByTagName('head')[0].appendChild(script);
+	})();
+}
 
 function jumpto(hash) {
 	window.location.href = '#' + hash;
