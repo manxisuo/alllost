@@ -4,6 +4,8 @@ var postList = [];
 
 var popWin = null;
 
+var tipWin = null;
+
 function log(msg) {
 	console.log(msg);
 }
@@ -130,6 +132,7 @@ function jumpto(hash) {
 
 $(function() {
 	popWin = new PopWin($('#loading'));
+	tipWin = new PopWin();
 
 	$(document).on('keypress', function(e) {
 		

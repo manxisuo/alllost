@@ -4,10 +4,24 @@ function PopWin(win) {
 	this.visible = false;
 	this.timer = -1;
 	
-	this._init();
+	this._initWin();
+	this._initMask();
 }
 
-PopWin.prototype._init = function() {
+PopWin.prototype._initWin = function() {
+	if (!this.win) {
+		this.win = $('<div />').addClass('mxs-popwin');
+		this.win.appendTo($(document.body));
+	}
+	else if (typeof this.win == 'string') {
+		var tip = this.win;
+		this.win = $('<div />').addClass('mxs-popwin');
+		this.win.html(tip);
+		this.win.appendTo($(document.body));
+	}
+}
+
+PopWin.prototype._initMask = function() {
 	var mask = $('<div />');
 	mask.css({
 		'display': 'none',
@@ -23,6 +37,11 @@ PopWin.prototype._init = function() {
 	$(document.body).append(mask);
 	
 	this.mask = mask;
+}
+
+PopWin.prototype.tip = function(msg) {
+	this.win.html(msg);
+	this.show(1000);
 }
 
 PopWin.prototype.show = function(timeout) {
