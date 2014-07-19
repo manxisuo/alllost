@@ -44,7 +44,7 @@ a, a:hover {
     font-weight: bold;
     font-size: 25px;
     color: black;
-	border-left: 10px solid orange;
+	border-left: 10px solid rgb(204, 87, 22);
 	padding: 1px;
 }
 #header h1 a:hover {
@@ -58,7 +58,7 @@ a, a:hover {
 
 #header span.menu a {
 	margin-right: 10px;
-	border-left: 8px solid orange;
+	border-left: 8px solid rgb(204, 87, 22);
 	padding: 1px;
 }
 
@@ -79,11 +79,15 @@ a, a:hover {
 
 }
 
+#pic_wrapper {
+	padding: 8px;
+	background-color: white;
+}
+
 #pic {
 	width: 500px;
 	min-height: 500px;
-	padding: 8px;
-	background-color: white;
+	padding: 0;
 }
 
 #desc {
@@ -152,7 +156,7 @@ a, a:hover {
 	margin: 0 0 10px 0;
 	padding: 20px 10px;
 	background-color: white;
-	width: 496px;
+	width: 500px;
 }
 
 .profile {

@@ -1,10 +1,12 @@
-var cur_index = 0;
+var KEY_LEFT = 37, KEY_RIGHT = 39;
 
 var postList = [];
 
 var popWin = null;
 
 var tipWin = null;
+
+var pager = null;
 
 function log(msg) {
 	console.log(msg);
@@ -23,32 +25,32 @@ function showPostWithIndex(index) {
 	updatePost('image/' + post.name + '.jpg', post.title, post.desc, post.date);
 	
 	if (index > 0) {
-		$('.prev').attr('href', '#' + postList[index - 1].name);
+		pager.setPrev(postList[index - 1].name);
 	}
 	else {
-		$('.prev').attr('href', '#' + postList[0].name);
+		pager.setPrev(postList[0].name);
 	}
 	
 	if (index < postList.length - 1) {
-		$('.next').attr('href', '#' + postList[index + 1].name);
+		pager.setNext(postList[index + 1].name);
 	}
 	else {
-		$('.next').attr('href', '#' + postList[postList.length - 1].name);
+		pager.setNext(postList[postList.length - 1].name);
 	}
 }
 
 function show404Page() {
 	updatePost('image/NotFound.jpg', 'Not Found', 'Not Found', null);
 
-	$('.prev').attr('href', '#' + postList[0].name);
-	$('.next').attr('href', '#' + postList[0].name);
+	pager.setPrev(postList[0].name);
+	pager.setNext(postList[0].name);
 }
 
 function showAboutPage() {
 	updatePost('image/About.jpg', '关于', '一个涂鸦的集合', null);
 
-	$('.prev').attr('href', '#' + postList[0].name);
-	$('.next').attr('href', '#' + postList[0].name);
+	pager.setPrev(postList[0].name);
+	pager.setNext(postList[0].name);
 }
 
 function showPostWithName(name) {
@@ -128,15 +130,46 @@ function reloadComment(postId, title) {
 }
 
 function jumpto(hash) {
-	window.location.href = '#' + hash;
+	window.location.href = hash;
+}
+
+function Pager(prevEl, nextEl) {
+	this.prevEl = prevEl;
+	this.nextEl = nextEl;
+}
+
+Pager.prototype.setPrev = function(filename) {
+	this.prevEl.attr('href', '#' + filename);
+}
+
+Pager.prototype.setNext = function(filename) {
+	this.nextEl.attr('href', '#' + filename);
+}
+
+Pager.prototype.toPrev = function() {
+	jumpto(this.prevEl.attr('href'));
+}
+
+Pager.prototype.toNext = function() {
+	jumpto(this.nextEl.attr('href'));
 }
 
 $(function() {
 	popWin = new PopWin($('#loading'));
 	tipWin = new PopWin();
+	pager = new Pager($('.prev'), $('.next'));
 
-	$(document).on('keypress', function(e) {
-		
+	// 注册方向键按下事件
+	$('body').attr('tabindex', 0).on('keydown', function(e) {
+		switch(e.which) {
+			case KEY_LEFT:
+				e.preventDefault();
+				pager.toPrev();
+				break;
+			case KEY_RIGHT:
+				e.preventDefault();
+				pager.toNext();
+		}
 	});
 	
 	// hash change event
