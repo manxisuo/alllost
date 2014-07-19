@@ -103,15 +103,13 @@ a, a:hover {
 	border: 1px solid #333333;
 	background-color: #888888;
 	padding: 5px 10px;
+	margin-left: 25px;
+	margin-right: 25px;
 	cursor: pointer;
 }
 
 .prev:hover, .next:hover {
 	background-color: #BBBBBB;
-}
-
-.prev {
-	margin-right: 50px;
 }
 
 #footer {

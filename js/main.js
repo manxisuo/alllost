@@ -29,6 +29,7 @@ function showPostWithIndex(index) {
 	}
 	else {
 		pager.setPrev(postList[0].name);
+		pager.setPrevVisible(false);
 	}
 	
 	if (index < postList.length - 1) {
@@ -36,6 +37,7 @@ function showPostWithIndex(index) {
 	}
 	else {
 		pager.setNext(postList[postList.length - 1].name);
+		pager.setNextVisible(false);
 	}
 }
 
@@ -131,27 +133,6 @@ function reloadComment(postId, title) {
 
 function jumpto(hash) {
 	window.location.href = hash;
-}
-
-function Pager(prevEl, nextEl) {
-	this.prevEl = prevEl;
-	this.nextEl = nextEl;
-}
-
-Pager.prototype.setPrev = function(filename) {
-	this.prevEl.attr('href', '#' + filename);
-}
-
-Pager.prototype.setNext = function(filename) {
-	this.nextEl.attr('href', '#' + filename);
-}
-
-Pager.prototype.toPrev = function() {
-	jumpto(this.prevEl.attr('href'));
-}
-
-Pager.prototype.toNext = function() {
-	jumpto(this.nextEl.attr('href'));
 }
 
 $(function() {
