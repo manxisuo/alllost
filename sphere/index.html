@@ -4,18 +4,24 @@
 	<meta charset="UTF-8">
 	<title></title>
 	
-	<link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="css/lib/mask.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="../css/main.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="../css/lib/mask.css" media="all" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#header span.menu a.menu-sphere {
+			border-left: 8px solid blue;
+		}
+	</style>
+	
 
-	<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js/lib/jquery.ba-hashchange.min.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.ba-hashchange.min.js"></script>
 	<script type="text/javascript">
 		var duoshuoQuery = {short_name:"alllost"};
 	</script>
 	<script src="http://static.duoshuo.com/embed.js"></script>
-	<script type="text/javascript" src="js/mask.js"></script>
-	<script type="text/javascript" src="js/lib.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/mask.js"></script>
+	<script type="text/javascript" src="../js/lib.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript">
 	</script>
 </head>
@@ -25,11 +31,11 @@
 		<!-- Header -->
         <div id="header">
             <h1>
-                <a href="">首页</a>
+                <a href="../">首页</a>
                 <!-- <small> --涂鸦</small> -->
             </h1>
 			<span class="menu">
-				<a href="sphere">Photo Sphere</a>
+				<a href="sphere" class="menu-sphere">Photo Sphere</a>
 				<a href="#About">About</a>
 				<a href="https://github.com/manxisuo/allosthing/tree/gh-pages">Source</a>
 			</span>

@@ -66,10 +66,11 @@ Poster.prototype.init = function(option) {
 	this.popWin = option.popWin;
 	
 	this.IMAGE_DIR = option.imageDir;
+	this.COMMON_IMAGE_DIR = option.commonImageDir;
 }
 
 Poster.prototype.show404Page = function() {
-	this._updatePost(this.IMAGE_DIR + 'NotFound.jpg', 'Not Found', 'Not Found', null);
+	this._updatePost(this.COMMON_IMAGE_DIR + 'NotFound.jpg', 'Not Found', 'Not Found', null);
 	
 	var pager = this.pager;
 	pager.setPrev(0);
@@ -79,7 +80,7 @@ Poster.prototype.show404Page = function() {
 }
 
 Poster.prototype.showAboutPage = function() {
-	this._updatePost(this.IMAGE_DIR + 'About.jpg', '关于', '一个涂鸦的集合', null);
+	this._updatePost(this.COMMON_IMAGE_DIR + 'About.jpg', '关于', '一个涂鸦的集合', null);
 
 	var pager = this.pager;
 	pager.setPrev(0);

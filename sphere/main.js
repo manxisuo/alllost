@@ -2,7 +2,7 @@ var POST_SOURCE_URL = 'list.js';
 
 var IMAGE_DIR = 'image/';
 
-var COMMON_IMAGE_DIR = 'image/';
+var COMMON_IMAGE_DIR = '../image/';
 
 var poster = null;
 
