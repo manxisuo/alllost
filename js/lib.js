@@ -70,21 +70,25 @@ Poster.prototype.init = function(option) {
 }
 
 Poster.prototype.show404Page = function() {
-	this._updatePost(this.COMMON_IMAGE_DIR + 'NotFound.jpg', 'Not Found', 'Not Found', null);
+	this._updatePost({
+		name: 'NotFound',
+		title: 'Not Found',
+		desc: 'Not Found'
+	}, null);
 	
 	var pager = this.pager;
-	pager.setPrev(0);
-	pager.setNext(0);
 	pager.setPrevVisible(false);
 	pager.setNextVisible(false);
 }
 
 Poster.prototype.showAboutPage = function() {
-	this._updatePost(this.COMMON_IMAGE_DIR + 'About.jpg', '关于', '一个涂鸦的集合', null);
-
+	this._updatePost({
+		name: 'About',
+		title: '关于',
+		desc: '一个图片的集合'
+	}, null);
+	
 	var pager = this.pager;
-	pager.setPrev(0);
-	pager.setNext(0);
 	pager.setPrevVisible(false);
 	pager.setNextVisible(false);
 }
@@ -101,24 +105,7 @@ Poster.prototype.showPost = function (index) {
 
 	var post = this.postList[index];
 
-	this._updatePost(getImageUrl(post), post.title, post.desc, post.date);
-	
-	if (index > 0) {
-		pager.setPrev(index - 1);
-	}
-	else {
-		pager.setPrev(0);
-		pager.setPrevVisible(false);
-	}
-
-	
-	if (index < this.postList.length - 1) {
-		pager.setNext(index + 1);
-	}
-	else {
-		pager.setNext(this.postList.length - 1);
-		pager.setNextVisible(false);
-	}
+	this._updatePost(post, index);
 }
 
 Poster.prototype.prev = function() {
@@ -147,7 +134,12 @@ Poster.prototype.addKeydownSupport = function() {
 	});
 }
 
-Poster.prototype._updatePost = function(imageUrl, title, desc, date) {
+Poster.prototype._updatePost = function(post, index) {
+	var imageUrl = getImageUrl(post);
+	var title = post.title;
+	var desc = post.desc;
+	var date = post.date;
+
 	var dest_title = title ? title : '';
 	var dest_desc = desc ? desc : '';
 	var dest_imgUrl = imageUrl ? imageUrl : '';
@@ -157,24 +149,54 @@ Poster.prototype._updatePost = function(imageUrl, title, desc, date) {
 	var popWin = this.popWin;
 	var imageEl = this.imageEl;
 	var _this = this;
-	
+
 	if (imageEl.attr('src') != dest_imgUrl) {
+	
 		popWin.show();
 		
-		this._updateImage(dest_imgUrl, function() {		
+		// 更新图片 (只有更新图片成功时，才继续更新其他)
+		this._updateImage(dest_imgUrl, function() {
+			// 更新标题
 			setTitle(dest_title);
 			titleEl.text(dest_title);
 			
+			// 更新描述
 			descEl.text(dest_desc);
 			
+			// 更新翻页组件
+			if (index != null) {
+				_this._updatePager(index);
+			}
 			
+			popWin.hide();
+			
+			// 更新评论
 			var threadKey = imageUrl.substring(_this.IMAGE_DIR.length, imageUrl.lastIndexOf('.'));
 			_this._updateComment(threadKey, dest_title);
 			
-			popWin.hide();
 		}, function() {
 			popWin.hide();
 		});
+	}
+}
+
+Poster.prototype._updatePager = function(index) {
+	var pager = this.pager;
+	if (index > 0) {
+		pager.setPrev(index - 1);
+	}
+	else {
+		pager.setPrev(0);
+		pager.setPrevVisible(false);
+	}
+
+	
+	if (index < this.postList.length - 1) {
+		pager.setNext(index + 1);
+	}
+	else {
+		pager.setNext(this.postList.length - 1);
+		pager.setNextVisible(false);
 	}
 }
 
@@ -190,7 +212,7 @@ Poster.prototype._updateImage = function(imgUrl, success, error) {
 		}
 	});
 
-	imageEl.on('load', function(e) {
+	imageEl.unbind('load').on('load', function(e) {
 		if(success) success();
 	});
 }
