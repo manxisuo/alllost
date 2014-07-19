@@ -46,6 +46,8 @@ function show404Page() {
 
 	pager.setPrev(postList[0].name);
 	pager.setNext(postList[0].name);
+	pager.setPrevVisible(false);
+	pager.setNextVisible(false);
 }
 
 function showAboutPage() {
@@ -53,6 +55,8 @@ function showAboutPage() {
 
 	pager.setPrev(postList[0].name);
 	pager.setNext(postList[0].name);
+	pager.setPrevVisible(false);
+	pager.setNextVisible(false);
 }
 
 function showPostWithName(name) {
