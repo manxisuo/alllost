@@ -12,7 +12,7 @@ function initPostList(callback) {
 }
 
 function getImageUrl(post) {
-	return 'image/' + post.name + '.jpg';
+	return IMAGE_DIR + post.name + '.jpg';
 }
 
 // 路由
