@@ -84,6 +84,9 @@ PopWin.prototype.show = function(timeout) {
 }
 
 PopWin.prototype.hide = function() {
+	// 清除定时
+	clearTimeout(this.timer);
+	
 	if (!this.visible) return;
 	
 	var mask = this.mask;
@@ -93,7 +96,4 @@ PopWin.prototype.hide = function() {
 	mask.hide();
 	
 	this.visible = false;
-	
-	// 清除定时
-	clearTimeout(this.timer);
 }

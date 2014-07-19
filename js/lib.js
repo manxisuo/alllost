@@ -159,9 +159,9 @@ Poster.prototype._updatePost = function(imageUrl, title, desc, date) {
 	var _this = this;
 	
 	if (imageEl.attr('src') != dest_imgUrl) {
-		popWin.show(5000);
+		popWin.show();
 		
-		this._updateImage(dest_imgUrl, function() {
+		this._updateImage(dest_imgUrl, function() {		
 			setTitle(dest_title);
 			titleEl.text(dest_title);
 			
@@ -172,19 +172,26 @@ Poster.prototype._updatePost = function(imageUrl, title, desc, date) {
 			_this._updateComment(threadKey, dest_title);
 			
 			popWin.hide();
+		}, function() {
+			popWin.hide();
 		});
 	}
 }
 
-Poster.prototype._updateImage = function(imgUrl, callback) {
+Poster.prototype._updateImage = function(imgUrl, success, error) {
 	var imageEl = this.imageEl;
 	
-	imageEl.attr('src', imgUrl);
-	
-	imageEl.on('load', function(e) {
-		if(callback) {
-			callback();
+	$.ajax(imgUrl, {
+		success: function() {
+			imageEl.attr('src', imgUrl);
+		}, 
+		error: function() {
+			if (error) error();
 		}
+	});
+
+	imageEl.on('load', function(e) {
+		if(success) success();
 	});
 }
 
