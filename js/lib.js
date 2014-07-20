@@ -171,7 +171,13 @@ Poster.prototype._updatePost = function(post, imageUrl, index) {
 			popWin.hide();
 			
 			// 更新评论
-			var threadKey = _this.CONTEXT + ':' + imageUrl;
+			var threadKey;
+			if (index != null) {
+				threadKey = _this.CONTEXT + ':' + imageUrl;
+			}
+			else {
+				threadKey = 'common:' + imageUrl;
+			}
 			_this._updateComment(threadKey, dest_title);
 			
 		}, function() {
