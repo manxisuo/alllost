@@ -2,7 +2,9 @@ var POST_SOURCE_URL = 'list.js';
 
 var IMAGE_DIR = 'image/';
 
-var COMMON_IMAGE_DIR = 'image/';
+var COMMON_IMAGE_DIR = '../image/';
+
+var CONTEXT = 'dodle';
 
 var poster = null;
 
@@ -53,13 +55,12 @@ $(function() {
 			commentEl: $('.widget'),
 			popWin: new PopWin($('#loading')),
 			imageDir: IMAGE_DIR,
-			commonImageDir: COMMON_IMAGE_DIR
+			commonImageDir: COMMON_IMAGE_DIR,
+			context: CONTEXT
 		});
 		
 		poster.addKeydownSupport();
 	
 		$(window).hashchange();
 	})
-   
-
 });

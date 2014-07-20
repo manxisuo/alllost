@@ -67,6 +67,7 @@ Poster.prototype.init = function(option) {
 	
 	this.IMAGE_DIR = option.imageDir;
 	this.COMMON_IMAGE_DIR = option.commonImageDir;
+	this.CONTEXT = option.context;
 }
 
 Poster.prototype.show404Page = function() {
@@ -74,7 +75,7 @@ Poster.prototype.show404Page = function() {
 		name: 'NotFound',
 		title: 'Not Found',
 		desc: 'Not Found'
-	}, null);
+	}, this.COMMON_IMAGE_DIR + 'NotFound.jpg', null);
 	
 	var pager = this.pager;
 	pager.setPrevVisible(false);
@@ -86,7 +87,7 @@ Poster.prototype.showAboutPage = function() {
 		name: 'About',
 		title: '关于',
 		desc: '一个图片的集合'
-	}, null);
+	}, this.COMMON_IMAGE_DIR + 'About.jpg', null);
 	
 	var pager = this.pager;
 	pager.setPrevVisible(false);
@@ -105,7 +106,7 @@ Poster.prototype.showPost = function (index) {
 
 	var post = this.postList[index];
 
-	this._updatePost(post, index);
+	this._updatePost(post, getImageUrl(post), index);
 }
 
 Poster.prototype.prev = function() {
@@ -134,8 +135,7 @@ Poster.prototype.addKeydownSupport = function() {
 	});
 }
 
-Poster.prototype._updatePost = function(post, index) {
-	var imageUrl = getImageUrl(post);
+Poster.prototype._updatePost = function(post, imageUrl, index) {
 	var title = post.title;
 	var desc = post.desc;
 	var date = post.date;
@@ -171,7 +171,7 @@ Poster.prototype._updatePost = function(post, index) {
 			popWin.hide();
 			
 			// 更新评论
-			var threadKey = imageUrl.substring(_this.IMAGE_DIR.length, imageUrl.lastIndexOf('.'));
+			var threadKey = _this.CONTEXT + ':' + imageUrl;
 			_this._updateComment(threadKey, dest_title);
 			
 		}, function() {

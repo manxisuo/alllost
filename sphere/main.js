@@ -4,6 +4,8 @@ var IMAGE_DIR = 'image/';
 
 var COMMON_IMAGE_DIR = '../image/';
 
+var CONTEXT = 'sphere';
+
 var poster = null;
 
 function initPostList(callback) {
@@ -53,13 +55,12 @@ $(function() {
 			commentEl: $('.widget'),
 			popWin: new PopWin($('#loading')),
 			imageDir: IMAGE_DIR,
-			commonImageDir: COMMON_IMAGE_DIR
+			commonImageDir: COMMON_IMAGE_DIR,
+			context: CONTEXT
 		});
 		
 		poster.addKeydownSupport();
 	
 		$(window).hashchange();
 	})
-   
-
 });

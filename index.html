@@ -2,21 +2,68 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	
+	<title>Allllllost</title>
 	<link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="css/lib/mask.css" media="all" rel="stylesheet" type="text/css" />
-
 	<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js/lib/jquery.ba-hashchange.min.js"></script>
+	<style type="text/css">
+		#main {
+			width: 350px;
+			margin-top: 40px;
+		}
+		
+		.pic_wrapper {
+			background-color: white;
+			margin: 10px 0;
+			padding: 8px;
+			
+			cursor: pointer;
+			
+			moz-border-radius: 5px 55px 5px 5px;
+			webkit-moz-border-radius: 5px 55px 5px 5px;
+			border-radius: 5px 55px 5px 5px;
+			-webkit-box-shadow: 0px 1px 3px #A8ABAB;
+			-moz-box-shadow: 0px 1px 3px #A8ABAB;
+			box-shadow: 0px 1px 3px #A8ABAB;
+		}
+		
+		.pic_wrapper:hover {
+			background-color: gray;
+		}
+		
+		.pic {
+			width: 300px;
+			padding: 0;
+			height: 150px;
+			margin: 0;
+			background: url(image/Home.jpg);
+		}
+		
+		#pic_sphere {
+			background-position-y: 151px;
+		}
+		
+		.desc {
+			float: right;
+			position: relative;
+			top: -103px;
+			left: -14px;
+			width: 10px;
+			font-size: 25px;
+		}
+		
+
+	</style>
+
 	<script type="text/javascript">
-		var duoshuoQuery = {short_name:"alllost"};
-	</script>
-	<script src="http://static.duoshuo.com/embed.js"></script>
-	<script type="text/javascript" src="js/mask.js"></script>
-	<script type="text/javascript" src="js/lib.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript">
+		$(function() {
+			$('.pic_wrapper:eq(0)').on('click', function() {
+				location.href = './doodle';
+			});
+			
+			$('.pic_wrapper:eq(1)').on('click', function() {
+				location.href = './sphere';
+			});
+		});
 	</script>
 </head>
 <body>
@@ -25,12 +72,10 @@
 		<!-- Header -->
         <div id="header">
             <h1>
-                <a href="">首页</a>
-                <!-- <small> --涂鸦</small> -->
+                <a href="../">首页</a>
             </h1>
 			<span class="menu">
-				<a href="sphere">Photo Sphere</a>
-				<a href="#About">About</a>
+				<a href="doodle/#About">About</a>
 				<a href="https://github.com/manxisuo/allosthing/tree/gh-pages">Source</a>
 			</span>
         </div>
@@ -38,28 +83,17 @@
         <!-- Content -->
 		<div id="main">
 			<div id="content">
-				<h3 id="title"></h3>
-				<div id="pic_wrapper" class="round-corner">
-					<img id="pic" />
-					<div id="desc"></div>
+				<div class="pic_wrapper">
+					<div id="pic_doole" class="pic"></div>
+					<span class="desc">涂鸦</span>
+				</div>
+				<div class="pic_wrapper">
+					<div id="pic_sphere" class="pic"></div>
+					<span class="desc">星球</span>
 				</div>
 			</div>
-			<div id="pager">
-				<a class="prev" href="#">&lt; Prev</a>
-				<a class="next" href="#1">Next &gt;</a>
-			</div>
-			<div class="widget round-corner-5">
-			</div>
 		</div>
-
-        <!-- Footer -->
-        <div id="footer">
-            <p>Created by 2014 Manxisuo | Hosted by GitHub</p>
-        </div>
     </div>
-	<div id="loading" class="mxs-popwin">
-		<span>loading...</span>
-	</div>
 </body>
 </body>
 </html>

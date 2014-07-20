@@ -62,6 +62,10 @@ a, a:hover {
 	padding: 1px;
 }
 
+#header span.menu a.menu-selected {
+	border-left: 8px solid blue;
+}
+
 #header span.menu a:hover {
     color: #555555;
 }
