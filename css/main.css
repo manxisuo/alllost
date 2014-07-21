@@ -42,7 +42,7 @@ a, a:hover {
 #header h1 a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 35px;
     color: black;
 	border-left: 10px solid rgb(204, 87, 22);
 	padding: 1px;
@@ -60,14 +60,15 @@ a, a:hover {
 	margin-right: 10px;
 	border-left: 8px solid rgb(204, 87, 22);
 	padding: 1px;
-}
-
-#header span.menu a.menu-selected {
-	border-left: 8px solid blue;
+	font-size: 25px;
 }
 
 #header span.menu a:hover {
     color: #555555;
+}
+
+#header span.menu a.menu-selected {
+	border-left: 8px solid blue;
 }
 
 #main {

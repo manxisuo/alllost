@@ -232,3 +232,14 @@ Poster.prototype._updateComment = function(postId, title) {
 	
 	this.commentEl.html(dsThread);
 }
+
+function Header() {
+
+}
+
+Header.handleMenus = function(menuItems) {
+	menuItems.on('click', function() {
+		menuItems.removeClass('menu-selected');
+		$(this).addClass('menu-selected');
+	});
+}

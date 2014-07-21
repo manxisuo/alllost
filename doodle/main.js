@@ -44,7 +44,9 @@ $(function() {
     $(window).hashchange(function(){
         handleHashChange(location.hash);
     });
-    
+
+	Header.handleMenus($('.menu a'));
+
     initPostList(function(postList) {
 		poster = new Poster(postList, new Pager($('.prev'), $('.next')));
 		poster.init({
