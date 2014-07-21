@@ -38,8 +38,12 @@
 			background: url(image/Home.jpg);
 		}
 		
+		#pic_doodle {
+			background-position-y: 0px;
+		}
+		
 		#pic_sphere {
-			background-position-y: -152px /* -161px */;
+			background-position-y: -152px /* -152px -161px */;
 		}
 		
 		.desc {
@@ -56,6 +60,7 @@
 
 	<script type="text/javascript">
 		$(function() {
+			// 点击链接跳转
 			$('.pic_wrapper:eq(0)').on('click', function() {
 				location.href = './doodle';
 			});
@@ -63,6 +68,19 @@
 			$('.pic_wrapper:eq(1)').on('click', function() {
 				location.href = './sphere';
 			});
+			
+			// 动画
+			var PIC_HEIGHT = 296;
+			var STEP = 1;
+			
+			setInterval(function() {
+				$('.pic').each(function() {
+					var bg_y = $(this).css('background-position-y');
+					bg_y = parseInt(bg_y.substring(0, bg_y.length - 2));
+					bg_y = (bg_y + STEP) % PIC_HEIGHT;
+					$(this).css('background-position-y', bg_y + 'px');
+				});
+			}, 25);
 		});
 	</script>
 </head>
@@ -86,7 +104,7 @@
 		<div id="main">
 			<div id="content">
 				<div class="pic_wrapper">
-					<div id="pic_doole" class="pic"></div>
+					<div id="pic_doodle" class="pic"></div>
 					<span class="desc">涂鸦</span>
 				</div>
 				<div class="pic_wrapper">
