@@ -71,16 +71,32 @@
 			
 			// 动画
 			var PIC_HEIGHT = 296;
-			var STEP = 1;
+
+			var time = 0;
 			
-			setInterval(function() {
+			var PERIOD = 10;
+			var COUNT = 296;
+			
+			var timer = setInterval(function() {
+				time++;
+				
+				var y = 1;
+				y = (y % PIC_HEIGHT);
+				
 				$('.pic').each(function() {
 					var bg_y = $(this).css('background-position-y');
 					bg_y = parseInt(bg_y.substring(0, bg_y.length - 2));
-					bg_y = (bg_y + STEP) % PIC_HEIGHT;
+					
+					bg_y += y;
+					
 					$(this).css('background-position-y', bg_y + 'px');
 				});
-			}, 25);
+				
+				if (time == COUNT) {
+					clearInterval(timer);
+				}
+				
+			}, PERIOD);
 		});
 	</script>
 </head>
