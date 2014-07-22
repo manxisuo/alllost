@@ -93,6 +93,7 @@ a, a:hover {
 	width: 500px;
 	min-height: 500px;
 	padding: 0;
+	background-color: rgb(114, 176, 194);
 }
 
 #desc {
